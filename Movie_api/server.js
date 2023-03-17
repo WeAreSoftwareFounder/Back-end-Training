@@ -1,4 +1,5 @@
-import { createServer } from 'http';
+
+import { createServer, Server } from 'http';
 import { appendFile, readFile } from 'fs';
 import { parse } from 'url';
 import path from 'path';
@@ -22,14 +23,14 @@ createServer((request, response) => {
         if (err) {
             console.log(err);
         } else {
-            console.log('Added to file');
+            console.log('Added to log.txt file');
         }
     });
 
     if (q.pathname.includes('documentation')) {
         filePath = (__dirname + '/documentation.html');
     } else {
-        filePath = 'index.html';
+        filePath = '/index.html';
     }
 
     readFile(filePath, (err, data) => {
@@ -42,3 +43,4 @@ createServer((request, response) => {
         response.end();
     });
 }).listen(8080);
+console.log('Sever Running on port: 8080');
