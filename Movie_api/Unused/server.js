@@ -42,5 +42,6 @@ createServer((request, response) => {
         response.write(data);
         response.end();
     });
-}).listen(8080);
+
+}); Server.listen
 console.log('Sever Running on port: 8080');
