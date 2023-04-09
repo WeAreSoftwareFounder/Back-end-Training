@@ -33,23 +33,12 @@ app.use((err, req, res, next) => {
 });
 
 app.use(bodyParser.json());
-app.use(methodOverride());
-
-app.use(bodyParser.json());
-app.use(methodOverride());
-
-app.use((err, req, res, next) => {
-  // logic
-});
 
 app.get('/', (req, res) => {
   res.send('Welcome to my app!');
 });
 
-app.get('/', (req, res) => {
-  res.send('Welcome to my app!');
-});
-
+//returns ovject from json, not sure why
 app.get('/movies', (req, res) => {
   let find = app.get('/movies.json', (req, res));
   console.log(find);
