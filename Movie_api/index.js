@@ -1,47 +1,59 @@
-
-import { createServer, Server } from 'http';
-import { appendFile, readFile } from 'fs';
-import { parse } from 'url';
-import path from 'path';
+import express from 'express';
+import morgan from 'morgan';
+const app = express();
 import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+import fs from 'fs';
+import path from 'path';
+import bodyParser from 'body-parser';
+import methodOverride from 'body-parser';
 
-createServer((request, response) => {
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
-    const __filename = fileURLToPath(import.meta.url);
+const accessLogStream = fs.createWriteStream(
+  path.join(__dirname, 'log.txt'),
+  { flags: 'a' }
+);
+app.use(
+  morgan(
+    ':method :url :status :res[content-length] - :response-time ms :date[web]',
+    { stream: accessLogStream }
+  )
+);
+app.use('/', express.static(__dirname + '/Public'));
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+);
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something broke');
+});
 
-    const __dirname = path.dirname(__filename);
+app.use(bodyParser.json());
+app.use(methodOverride());
 
-    response.writeHead(200, { 'Content-Type': 'text/plain' });
-    response.end('Hello Node!" \n')
-    console.log('My fist sever is running on: Port 8080 ')
+app.use(bodyParser.json());
+app.use(methodOverride());
 
-    let addr = request.url,
-        q = parse(addr, true),
-        filePath = '';
+app.use((err, req, res, next) => {
+  // logic
+});
 
-    appendFile('log.txt', 'URL: ' + addr + '\nTimestamp: ' + new Date() + '\n\n', (err) => {
-        if (err) {
-            console.log(err);
-        } else {
-            console.log('Added to log.txt file');
-        }
-    });
+app.get('/', (req, res) => {
+  res.send('Welcome to my app!');
+});
 
-    if (q.pathname.includes('documentation')) {
-        filePath = (__dirname + '/documentation.html');
-    } else {
-        filePath = '/index.html';
-    }
+app.get('/', (req, res) => {
+  res.send('Welcome to my app!');
+});
 
-    readFile(filePath, (err, data) => {
-        if (err) {
-            throw err;
-        }
-
-        response.writeHead(200, { 'Content-Type': 'text/html' });
-        response.write(data);
-        response.end();
-    });
-
-}); Server.listen
-console.log('Sever Running on port: 8080');
+app.get('/movies', (req, res) => {
+  let find = app.get('/movies.json', (req, res));
+  console.log(find);
+});
+app.listen(8080, () => {
+  console.log('Your app is listening on port 8080.');
+});
