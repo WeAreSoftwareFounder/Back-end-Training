@@ -6,10 +6,24 @@ import { dirname } from 'path';
 import fs from 'fs';
 import path from 'path';
 import bodyParser from 'body-parser';
-import methodOverride from 'body-parser';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+
+let topMov = {
+  Titles: [
+    'Blind Date',
+    'The Electric Horseman',
+    'Robotech: Love Live Alive',
+    'Rocket Gibraltar',
+    'Arizona Gang Busters',
+    'Jealous Husbands',
+    'The Old Maid',
+    'The International',
+    'Sphere',
+    'Cheap Kisses',
+  ],
+};
 
 const accessLogStream = fs.createWriteStream(
   path.join(__dirname, 'log.txt'),
@@ -40,8 +54,7 @@ app.get('/', (req, res) => {
 
 //returns ovject from json, not sure why
 app.get('/movies', (req, res) => {
-  let find = app.get('/movies.json', (req, res));
-  console.log(find);
+  res.json(topMov);
 });
 app.listen(8080, () => {
   console.log('Your app is listening on port 8080.');
