@@ -11,18 +11,24 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 let topMov = {
-  Titles: [
-    'Blind Date',
-    'The Electric Horseman',
-    'Robotech: Love Live Alive',
-    'Rocket Gibraltar',
-    'Arizona Gang Busters',
-    'Jealous Husbands',
-    'The Old Maid',
-    'The International',
-    'Sphere',
-    'Cheap Kisses',
-  ],
+  Titles: {
+    name: 'BlindDate',
+    genre: 'RomCom',
+    discription:
+      'Blind Date is a 1987 American romantic comedy film directed by Blake Edwards and starring Bruce Willis (in his first credited lead role) and Kim Basinger. ',
+    director: 'Blake Edwards',
+    imgurl:
+      'https://upload.wikimedia.org/wikipedia/en/2/22/Blinddateposter.jpg',
+    name: 'TheElectricHorseman',
+    name: 'RobotechLoveLiveAlive',
+    name: 'RocketGibraltar',
+    name: 'ArizonaGangBusters',
+    name: 'JealousHusbands',
+    name: 'TheOldMaid',
+    name: ' TheInternational',
+    name: 'Sphere',
+    name: 'CheapKisses',
+  },
 };
 
 const accessLogStream = fs.createWriteStream(
@@ -54,7 +60,9 @@ app.get('/', (req, res) => {
 
 //returns ovject from json, not sure why
 app.get('/movies', (req, res) => {
-  res.json(topMov);
+  if ('genre' in topMov) {
+    res.json(topMov.hasOwnProperty('name'));
+  }
 });
 app.listen(8080, () => {
   console.log('Your app is listening on port 8080.');
