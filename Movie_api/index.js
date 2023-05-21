@@ -10,8 +10,8 @@ import bodyParser from 'body-parser';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-let topMov = {
-  Titles: {
+let topMov = [
+  {
     name: 'BlindDate',
     genre: 'RomCom',
     discription:
@@ -19,17 +19,90 @@ let topMov = {
     director: 'Blake Edwards',
     imgurl:
       'https://upload.wikimedia.org/wikipedia/en/2/22/Blinddateposter.jpg',
-    name: 'TheElectricHorseman',
-    name: 'RobotechLoveLiveAlive',
-    name: 'RocketGibraltar',
-    name: 'ArizonaGangBusters',
-    name: 'JealousHusbands',
-    name: 'TheOldMaid',
-    name: ' TheInternational',
-    name: 'Sphere',
-    name: 'CheapKisses',
   },
-};
+  {
+    name: 'TheElectricHorseman',
+    genre: '',
+    discription:
+      'Blind Date is a 1987 American romantic comedy film directed by Blake Edwards and starring Bruce Willis (in his first credited lead role) and Kim Basinger. ',
+    director: 'Blake Edwards',
+    imgurl:
+      'https://upload.wikimedia.org/wikipedia/en/2/22/Blinddateposter.jpg',
+  },
+  {
+    name: 'RobotechLoveLiveAlive',
+    genre: '',
+    discription:
+      'Blind Date is a 1987 American romantic comedy film directed by Blake Edwards and starring Bruce Willis (in his first credited lead role) and Kim Basinger. ',
+    director: 'Blake Edwards',
+    imgurl:
+      'https://upload.wikimedia.org/wikipedia/en/2/22/Blinddateposter.jpg',
+  },
+  {
+    name: 'RocketGibraltar',
+    genre: 'RomCom',
+    discription:
+      'Blind Date is a 1987 American romantic comedy film directed by Blake Edwards and starring Bruce Willis (in his first credited lead role) and Kim Basinger. ',
+    director: 'Blake Edwards',
+    imgurl:
+      'https://upload.wikimedia.org/wikipedia/en/2/22/Blinddateposter.jpg',
+  },
+  {
+    name: 'ArizonaGangBusters',
+    genre: '',
+    discription:
+      'Blind Date is a 1987 American romantic comedy film directed by Blake Edwards and starring Bruce Willis (in his first credited lead role) and Kim Basinger. ',
+    director: 'Blake Edwards',
+    imgurl:
+      'https://upload.wikimedia.org/wikipedia/en/2/22/Blinddateposter.jpg',
+  },
+  {
+    name: 'JealousHusbands',
+    genre: '',
+    discription:
+      'Blind Date is a 1987 American romantic comedy film directed by Blake Edwards and starring Bruce Willis (in his first credited lead role) and Kim Basinger. ',
+    director: 'Blake Edwards',
+    imgurl:
+      'https://upload.wikimedia.org/wikipedia/en/2/22/Blinddateposter.jpg',
+  },
+  {
+    name: 'TheOldMaid',
+    genre: '',
+    discription:
+      'Blind Date is a 1987 American romantic comedy film directed by Blake Edwards and starring Bruce Willis (in his first credited lead role) and Kim Basinger. ',
+    director: 'Blake Edwards',
+    imgurl:
+      'https://upload.wikimedia.org/wikipedia/en/2/22/Blinddateposter.jpg',
+  },
+  {
+    name: ' TheInternational',
+    genre: '',
+    discription:
+      'Blind Date is a 1987 American romantic comedy film directed by Blake Edwards and starring Bruce Willis (in his first credited lead role) and Kim Basinger. ',
+    director: 'Blake Edwards',
+    imgurl:
+      'https://upload.wikimedia.org/wikipedia/en/2/22/Blinddateposter.jpg',
+  },
+  {
+    name: 'Sphere',
+    genre: '',
+    discription:
+      'Blind Date is a 1987 American romantic comedy film directed by Blake Edwards and starring Bruce Willis (in his first credited lead role) and Kim Basinger. ',
+    director: 'Blake Edwards',
+    imgurl:
+      'https://upload.wikimedia.org/wikipedia/en/2/22/Blinddateposter.jpg',
+  },
+  {
+    name: 'CheapKisses',
+    genre: '',
+    discription:
+      'Blind Date is a 1987 American romantic comedy film directed by Blake Edwards and starring Bruce Willis (in his first credited lead role) and Kim Basinger. ',
+    director: 'Blake Edwards',
+    imgurl:
+      'https://upload.wikimedia.org/wikipedia/en/2/22/Blinddateposter.jpg',
+  },
+];
+let result = topMov.find((item) => (item.genre = 'RomCom'));
 
 const accessLogStream = fs.createWriteStream(
   path.join(__dirname, 'log.txt'),
@@ -57,11 +130,12 @@ app.use(bodyParser.json());
 app.get('/', (req, res) => {
   res.send('Welcome to my app!');
 });
-
 //returns ovject from json, not sure why
 app.get('/movies', (req, res) => {
-  if ('genre' in topMov) {
-    res.json(topMov.hasOwnProperty('name'));
+  if (result in topMov) {
+    res.send(topMov.result.name);
+  } else {
+    res.send('nothing found yet');
   }
 });
 app.listen(8080, () => {
