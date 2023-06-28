@@ -6,7 +6,6 @@ import fs from 'fs';
 import path from 'path';
 import bodyParser from 'body-parser';
 import { v4 as uuidv4 } from 'uuid';
-import { title } from 'process';
 //variables
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
@@ -163,7 +162,7 @@ app.use((err, req, res, next) => {
 //Routing
 app.use('/', express.static(__dirname + '/public'));
 app.get('/', (req, res) => {
-  res.sendFile('index.html');
+  res.send('Hello');
 });
 app.get('/movies', (req, res) => {
   res.status(200).json(movies);
@@ -285,6 +284,6 @@ app.get('/movies/directors/:directorName', (req, res) => {
 });
 
 //server start point
-app.listen(8080, () => {
+app.listen(10533, () => {
   console.log('Your app is listening on port 8080.');
 });
