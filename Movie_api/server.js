@@ -33,17 +33,26 @@ let movies = [
     },
     director: { name: 'Jaume Collet-Serra' },
     image:
-      'https://www.imdb.com/title/tt6443346/mediaviewer/rm2091778049/?ref_=tt_ov_i,
+      'https://www.imdb.com/title/tt6443346/mediaviewer/rm2091778049/?ref_=tt_ov_i',
   },
   {
     title: 'Venom',
-    genre: { name: 'Action', description: 'A failed reporter is bonded to an alien entity, one of many symbiotes who have invaded Earth. But the being takes a liking to Earth and decides to protect it.' },
+    genre: {
+      name: 'Action',
+      description:
+        'A failed reporter is bonded to an alien entity, one of many symbiotes who have invaded Earth. But the being takes a liking to Earth and decides to protect it.',
+    },
     director: { name: 'Ruben Fleischer' },
-    image: 'https://www.imdb.com/title/tt1270797/mediaviewer/rm629808385/?ref_=tt_ov_i',
+    image:
+      'https://www.imdb.com/title/tt1270797/mediaviewer/rm629808385/?ref_=tt_ov_i',
   },
   {
     title: 'Black Panther : Wakanda Forever',
-    genre: { name: 'Action', description: 'The people of Wakanda fight to protect their home from intervening world powers as they mourn the death of King TChalla.' },
+    genre: {
+      name: 'Action',
+      description:
+        'The people of Wakanda fight to protect their home from intervening world powers as they mourn the death of King TChalla.',
+    },
     director: { name: 'Ryan Coogler' },
     image:
       'A failed reporter is bonded to an alien entity, one of many symbiotes who have invaded Earth. But the being takes a liking to Earth and decides to protect it.',
@@ -62,7 +71,11 @@ let movies = [
   },
   {
     title: 'Avatar',
-    genre: { name: 'Action', description: 'A paraplegic Marine dispatched to the moon Pandora on a unique mission becomes torn between following his orders and protecting the world he feels is his home.' },
+    genre: {
+      name: 'Action',
+      description:
+        'A paraplegic Marine dispatched to the moon Pandora on a unique mission becomes torn between following his orders and protecting the world he feels is his home.',
+    },
     director: { name: 'James Cameron' },
 
     image: '',
@@ -70,33 +83,54 @@ let movies = [
   {
     title: 'John Wick',
     genre: { name: 'Action', description: '' },
-    director: { name: 'https://www.imdb.com/title/tt0499549/mediaviewer/rm2864126209/?ref_=tt_ov_i' },
+    director: {
+      name: 'https://www.imdb.com/title/tt0499549/mediaviewer/rm2864126209/?ref_=tt_ov_i',
+    },
 
     image: '',
   },
   {
     title: 'The Matrix : Ressurections',
-    genre: { name: 'Action', description: 'Return to a world of two realities: one, everyday life; the other, what lies behind it. To find out if his reality is a construct, to truly know himself, Mr. Anderson will have to choose to follow the white rabbit once more.' },
+    genre: {
+      name: 'Action',
+      description:
+        'Return to a world of two realities: one, everyday life; the other, what lies behind it. To find out if his reality is a construct, to truly know himself, Mr. Anderson will have to choose to follow the white rabbit once more.',
+    },
     director: { name: 'Lana Wachowski' },
-    image: 'https://www.imdb.com/title/tt10838180/mediaviewer/rm3704744193/?ref_=tt_ov_i',
+    image:
+      'https://www.imdb.com/title/tt10838180/mediaviewer/rm3704744193/?ref_=tt_ov_i',
   },
   {
     title: 'Avengers : Endgame',
-    genre: { name: 'Action', description: 'After the devastating events of Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos actions and restore balance to the universe.' },
-    director: { name: 'Anthony Russo','Joe Russo' },
-    image: 'https://www.imdb.com/title/tt4154796/mediaviewer/rm2775147008/?ref_=tt_ov_i',
+    genre: {
+      name: 'Action',
+      description:
+        'After the devastating events of Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos actions and restore balance to the universe.',
+    },
+    director: { name: 'Anthony Russo', name: 'Joe Russo' },
+    image:
+      'https://www.imdb.com/title/tt4154796/mediaviewer/rm2775147008/?ref_=tt_ov_i',
   },
   {
     title: 'Tenet',
-    genre: { name: 'action', description: 'Armed with only one word, Tenet, and fighting for the survival of the entire world, a Protagonist journeys through a twilight world of international espionage on a mission that will unfold in something beyond real time.' },
+    genre: {
+      name: 'action',
+      description:
+        'Armed with only one word, Tenet, and fighting for the survival of the entire world, a Protagonist journeys through a twilight world of international espionage on a mission that will unfold in something beyond real time.',
+    },
     director: { name: 'Christopher Nolan' },
     image: '',
   },
   {
     title: 'Venom: Let there be carnage',
-    genre: { name: 'Action', description: 'Eddie Brock attempts to reignite his career by interviewing serial killer Cletus Kasady, who becomes the host of the symbiote Carnage and escapes prison after a failed execution.' },
+    genre: {
+      name: 'Action',
+      description:
+        'Eddie Brock attempts to reignite his career by interviewing serial killer Cletus Kasady, who becomes the host of the symbiote Carnage and escapes prison after a failed execution.',
+    },
     director: { name: 'Andy Serkis' },
-    image: 'https://www.imdb.com/title/tt7097896/mediaviewer/rm980350465/?ref_=tt_ov_i',
+    image:
+      'https://www.imdb.com/title/tt7097896/mediaviewer/rm980350465/?ref_=tt_ov_i',
   },
 ];
 
