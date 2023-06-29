@@ -6,7 +6,6 @@ import fs from 'fs';
 import path from 'path';
 import bodyParser from 'body-parser';
 import { v4 as uuidv4 } from 'uuid';
-import { url } from 'inspector';
 //variables
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
@@ -359,18 +358,6 @@ app.get('/movies/directors/:directorName', (req, res) => {
     res.status(400).send('movie not found');
   }
 });
-//Serarch by image
-app.get('/movies/image/:image', (req, res) => {
-  const { image } = req.params;
-  const movie = movies.find((movie) => movie.image === image).src;
-
-  if (movie) {
-    res.status(200).send(movie);
-  } else {
-    res.status(400).send('Image not found');
-  }
-});
-
 //server start point
 app.listen(10533, () => {
   console.log('Your app is listening on port 10533.');

@@ -1,4 +1,8 @@
-table.GeneratedTable {
+body {
+  overflow: hidden;
+  overflow-y: scroll;
+}
+Table {
   width: 100%;
   background-color: #ffffff;
   border-collapse: collapse;
@@ -8,14 +12,26 @@ table.GeneratedTable {
   color: #000000;
 }
 
-table.GeneratedTable td,
-table.GeneratedTable th {
+Table td,
+Table th {
   border-width: 2px;
   border-color: #ffcc00;
   border-style: solid;
   padding: 3px;
 }
 
-table.GeneratedTable thead {
+Table thead {
   background-color: #ffcc00;
+}
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+}
+.half img {
+  width: 50vw;
+  height: 50vw;
+  margin-left: 25vw;
 }

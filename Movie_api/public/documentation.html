@@ -6,31 +6,122 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
+    <link rel="stylesheet" href="styles.css" />
     <title>Document</title>
   </head>
   <body>
-    <ol>
-      <li>
-        Use the Documentation button to navigate to the Documentation
-        page or use </b>'localhost:10533/documentation.html'</b>
-      </li>
-      <li>
-        Use
-        <b>localhost:10533/movies</b> to display the whole movie list
-      </li>
-      <li>
-        Use <b>/movies/:title</b> (Replace<b> :title</b> with
-        movie name) to show movie from array
-      </li>
-      <li>Use <b>/genre/:genreName</b> (Replace<b> :genreName</b> with wanted genre) to show movie with this genre from array</li>
-      <li>Use <b>/directors/:directorName</b> (Replace<b> :directorName</b> with
-        Director name) to show movie with the director from array</li>
-      <li>/users/:id</b> (Replace<b> :id</b> with numbers 1 or 2) to show user info in postman</li>
-      <li>/users/:id/favorateTitle</b> (Replace<b> :favorateTitle</b> with movie name) to add users favorateTitle to there info in postman</li>
-      <li>/users/:id/:update</b> (Replace<b> :id</b> with) user id in postman and update with new username to update info</li>
-      <li>/users/:id/:delete</b> (Replace<b> :id </b> with user id) in postman to delete user from records</li>
-      <li></li>
-      <li></li>
-    </ol>
+    <h1>API Endpoints</h1>
+    <p>
+      This table below provides a list of all current API endpoints
+      with their corresponding description, call URL, HTTP method,
+      data request format, data response format and example responses.
+      This list will continue to be updated as further endpoints are
+      added.
+    </p>
+    <table class="Table">
+      <thead>
+        <tr>
+          <th>Host</th>
+          <th>Endpoints</th>
+          <th>Discription</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Localhost:10533</td>
+          <td>/movies</td>
+          <td>Displays whole movie list in json format</td>
+        </tr>
+        <tr>
+          <td>Localhost:10533</td>
+          <td>/movies/:title</td>
+          <td>
+            Replace <b>:title</b> with movie title to display movie
+            info on the given title
+          </td>
+        </tr>
+        <tr>
+          <td>Localhost:10533</td>
+          <td>/movies/genre/:genre</td>
+          <td>
+            Replace <b>:genre</b> with movie genre to display movie
+            genre
+          </td>
+        </tr>
+        <tr>
+          <td>Localhost:10533</td>
+          <td>/movies/directors/:director</td>
+          <td>
+            Replace <b> :director</b> with director name
+            <b>'Remember the %20 for your spaces</b> to display
+            Director info
+          </td>
+        </tr>
+        <tr>
+          <td>Localhost:10533</td>
+          <td>/users</td>
+          <td>
+            Replace :users with user id <b>'1 or 2 for this'</b> to
+            display user info
+          </td>
+        </tr>
+        <tr>
+          <td>Localhost:10533</td>
+          <td>/user/:id/:update</td>
+          <td>
+            Replace :id with user id
+            <b>'1 or 2 for this' & ':update with new name</b> inside
+            of postman to update user info
+          </td>
+        </tr>
+        <tr>
+          <td>Localhost:10533</td>
+          <td>/user/:id/:movieTitle</td>
+          <td>
+            Replace :id with user id
+            <b
+              >'1 or 2 for this' & ':movieTitle with new movie name</b
+            >
+            inside of postman to update favorite movie info
+          </td>
+        </tr>
+        <tr>
+          <td>Localhost:10533</td>
+          <td>/user/:id/:movieTitle</td>
+          <td>
+            Replace :users with user id <b>'1 or 2 for this'</b> to
+            delete users favorite movie info from system using delete
+            method in postman
+          </td>
+        </tr>
+        <tr>
+          <td>Localhost:10533</td>
+          <td>/user/:id</td>
+          <td>
+            Replace :users with user id <b>'1 or 2 for this'</b> to
+            delete user info from system using delete method in
+            postman
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br />
+    <div class="container">
+      <div class="half">
+        <img
+          src="../Postman/Get/WholeMovieGet.png"
+          alt="Get Example"
+        />
+        <img
+          src="../Postman/Post/PostNewUser.png"
+          alt="Update User"
+        />
+        <img
+          src="../Postman/Delete/DeleteUser.png"
+          alt="Delete user"
+        />
+        <img src="..//Postman/Update/UpdateUserName.png" alt="" />
+      </div>
+    </div>
   </body>
 </html>
