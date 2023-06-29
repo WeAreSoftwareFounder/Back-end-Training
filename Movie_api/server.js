@@ -1,11 +1,12 @@
 import express from 'express';
 import morgan from 'morgan';
-import { fileURLToPath } from 'url';
+import { fileURLToPath, pathToFileURL } from 'url';
 import { dirname } from 'path';
 import fs from 'fs';
 import path from 'path';
 import bodyParser from 'body-parser';
 import { v4 as uuidv4 } from 'uuid';
+import { url } from 'inspector';
 //variables
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
@@ -30,9 +31,15 @@ let movies = [
       description:
         'Nearly 5,000 years after he was bestowed with the almighty powers of the Egyptian gods--and imprisoned just as quickly--Black Adam is freed from his earthly tomb, ready to unleash his unique form of justice on the modern world.',
     },
-    director: { name: 'Jaume Collet-Serra' },
-    image:
-      'https://www.imdb.com/title/tt6443346/mediaviewer/rm2091778049/?ref_=tt_ov_i',
+    director: {
+      name: 'Jaume Collet-Serra',
+      age: '49',
+      DOB: '23 March 1974',
+      DOD: 'TBA',
+    },
+    image: {
+      src: 'https://m.media-amazon.com/images/M/MV5BNTFkZjdjN2QtOGE5MS00ZTgzLTgxZjAtYzkyZWQ5MjEzYmZjXkEyXkFqcGdeQXVyMTM0NTUzNDIy._V1_FMjpg_UX1000_.jpg',
+    },
   },
   {
     title: 'Venom',
@@ -41,9 +48,14 @@ let movies = [
       description:
         'A failed reporter is bonded to an alien entity, one of many symbiotes who have invaded Earth. But the being takes a liking to Earth and decides to protect it.',
     },
-    director: { name: 'Ruben Fleischer' },
+    director: {
+      name: 'Ruben Fleischer',
+      age: '48',
+      DOB: '31 October 1974',
+      DOD: 'TBA',
+    },
     image:
-      'https://www.imdb.com/title/tt1270797/mediaviewer/rm629808385/?ref_=tt_ov_i',
+      'https://m.media-amazon.com/images/M/MV5BNTFkZjdjN2QtOGE5MS00ZTgzLTgxZjAtYzkyZWQ5MjEzYmZjXkEyXkFqcGdeQXVyMTM0NTUzNDIy._V1_FMjpg_UX1000_.jpg',
   },
   {
     title: 'Black Panther : Wakanda Forever',
@@ -52,21 +64,30 @@ let movies = [
       description:
         'The people of Wakanda fight to protect their home from intervening world powers as they mourn the death of King TChalla.',
     },
-    director: { name: 'Ryan Coogler' },
-    image:
-      'A failed reporter is bonded to an alien entity, one of many symbiotes who have invaded Earth. But the being takes a liking to Earth and decides to protect it.',
+    director: {
+      name: 'Ryan Coogler',
+      age: '37',
+      DOB: '23 May 1986',
+      DOD: 'TBA',
+    },
+    image: '',
   },
   {
-    title: 'Spiderman : No Way Home',
-    genre: 'Action',
-    director: {
+    title: 'Spider Man: No Way Home',
+    genre: {
       name: 'Action',
       description:
         'With Spider-Mans identity now revealed, Peter asks Doctor Strange for help. When a spell goes wrong, dangerous foes from other worlds start to appear, forcing Peter to discover what it truly means to be Spider-Man.',
     },
-
-    image:
-      'https://www.imdb.com/title/tt10872600/mediaviewer/rm3936939521/?ref_=tt_ov_i',
+    director: {
+      name: 'Ryan Coogler',
+      age: '37',
+      DOB: '23 May 1986',
+      DOD: 'TBA',
+    },
+    image: {
+      imageURL: '',
+    },
   },
   {
     title: 'Avatar',
@@ -75,18 +96,34 @@ let movies = [
       description:
         'A paraplegic Marine dispatched to the moon Pandora on a unique mission becomes torn between following his orders and protecting the world he feels is his home.',
     },
-    director: { name: 'James Cameron' },
+    director: {
+      name: 'James Cameron',
+      age: '68',
+      DOB: '16 August 1954',
+      DOD: 'TBA',
+    },
 
-    image: '',
+    image: {
+      imageURL: '',
+    },
   },
   {
     title: 'John Wick',
-    genre: { name: 'Action', description: '' },
+    genre: {
+      name: 'Action',
+      description:
+        'An ex-hitman comes out of retirement to track down the gangsters who killed his dog and stole his car.',
+    },
     director: {
-      name: 'https://www.imdb.com/title/tt0499549/mediaviewer/rm2864126209/?ref_=tt_ov_i',
+      name: 'Chad Stahelski',
+      age: '54',
+      DOB: '20 September 1968 ',
+      DOD: 'TBA',
     },
 
-    image: '',
+    image: {
+      imageURL: '',
+    },
   },
   {
     title: 'The Matrix : Ressurections',
@@ -95,9 +132,15 @@ let movies = [
       description:
         'Return to a world of two realities: one, everyday life; the other, what lies behind it. To find out if his reality is a construct, to truly know himself, Mr. Anderson will have to choose to follow the white rabbit once more.',
     },
-    director: { name: 'Lana Wachowski' },
-    image:
-      'https://www.imdb.com/title/tt10838180/mediaviewer/rm3704744193/?ref_=tt_ov_i',
+    director: {
+      name: 'Lana Wachowski',
+      age: '58',
+      DOB: '21 June 1965',
+      DOD: 'TBA',
+    },
+    image: {
+      imageURL: '',
+    },
   },
   {
     title: 'Avengers : Endgame',
@@ -106,9 +149,19 @@ let movies = [
       description:
         'After the devastating events of Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos actions and restore balance to the universe.',
     },
-    director: { name: 'Anthony Russo', name: 'Joe Russo' },
-    image:
-      'https://www.imdb.com/title/tt4154796/mediaviewer/rm2775147008/?ref_=tt_ov_i',
+    director: {
+      name: 'Anthony Russo',
+      age: '53',
+      DOB: '3 February 1970',
+      DOD: 'TBA',
+      name: 'Joe Russo',
+      age: '51',
+      DOB: '18 July 1971',
+      DOD: 'TBA',
+    },
+    image: {
+      imageURL: '',
+    },
   },
   {
     title: 'Tenet',
@@ -117,8 +170,15 @@ let movies = [
       description:
         'Armed with only one word, Tenet, and fighting for the survival of the entire world, a Protagonist journeys through a twilight world of international espionage on a mission that will unfold in something beyond real time.',
     },
-    director: { name: 'Christopher Nolan' },
-    image: '',
+    director: {
+      name: 'Christopher Nolan',
+      age: '30 July 1970',
+      DOB: '52',
+      DOD: 'TBA',
+    },
+    image: {
+      imageURL: '',
+    },
   },
   {
     title: 'Venom: Let there be carnage',
@@ -127,9 +187,15 @@ let movies = [
       description:
         'Eddie Brock attempts to reignite his career by interviewing serial killer Cletus Kasady, who becomes the host of the symbiote Carnage and escapes prison after a failed execution.',
     },
-    director: { name: 'Andy Serkis' },
-    image:
-      'https://www.imdb.com/title/tt7097896/mediaviewer/rm980350465/?ref_=tt_ov_i',
+    director: {
+      name: 'Andy Serkis',
+      age: '59',
+      DOB: '20 April 1964',
+      DOD: 'TBA',
+    },
+    image: {
+      imageURL: '',
+    },
   },
 ];
 
@@ -161,16 +227,16 @@ app.use((err, req, res, next) => {
 
 //Routing
 app.use('/', express.static(__dirname + '/public'));
-app.get('/', (req, res) => {
-  res.send('Hello');
+app.get('/public/documentation.html', (req, res) => {
+  res.sendFile('/documentation.html');
 });
 app.get('/movies', (req, res) => {
   res.status(200).json(movies);
 });
 
 //Create data
-
 //New users
+
 app.post('/users', (req, res) => {
   const newUser = req.body;
   if (newUser.name) {
@@ -242,9 +308,22 @@ app.delete('/users/:id', (req, res) => {
 });
 
 //Read data
+//load whole movie list
+app.get('/movies', (req, res) => {
+  res.json(movies);
+});
+//Searcg by user
+app.get('/users/:id', (req, res) => {
+  const { id } = req.params;
+  let user = users.find((user) => user.id == id);
+  if (user) {
+    res.status(200).json(user);
+  } else {
+    res.status(400).send('user not found');
+  }
+});
 //Search by title
 app.get('/movies/:title', (req, res) => {
-  res.sendFile('/public/documentation.html');
   const { title } = req.params;
   const movie = movies.find((movie) => movie.title === title);
 
@@ -256,7 +335,6 @@ app.get('/movies/:title', (req, res) => {
 });
 //Search by genre
 app.get('/movies/genre/:genreName', (req, res) => {
-  res.sendFile('/public/documentation.html');
   const { genreName } = req.params;
   const genre = movies.find(
     (movie) => movie.genre.name === genreName
@@ -270,20 +348,30 @@ app.get('/movies/genre/:genreName', (req, res) => {
 });
 //Serarch by director
 app.get('/movies/directors/:directorName', (req, res) => {
-  res.sendFile('/public/documentation.html');
   const { directorName } = req.params;
-  const direcoter = movies.find(
+  const director = movies.find(
     (movie) => movie.director.name === directorName
   ).director;
 
-  if (direcoter) {
-    res.status(200).json(direcoter);
+  if (director) {
+    res.status(200).json(director);
   } else {
     res.status(400).send('movie not found');
+  }
+});
+//Serarch by image
+app.get('/movies/image/:image', (req, res) => {
+  const { image } = req.params;
+  const movie = movies.find((movie) => movie.image === image).src;
+
+  if (movie) {
+    res.status(200).send(movie);
+  } else {
+    res.status(400).send('Image not found');
   }
 });
 
 //server start point
 app.listen(10533, () => {
-  console.log('Your app is listening on port 8080.');
+  console.log('Your app is listening on port 10533.');
 });
